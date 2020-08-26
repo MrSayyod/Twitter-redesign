@@ -10,6 +10,11 @@
   </head>
 
   <body>
+  <% if flash[:notice] %>
+    <%= notice %>
+  <% else %>
+    <%= alert %>
+  <% end %>
     <%= yield %>
   </body>
 </html>
