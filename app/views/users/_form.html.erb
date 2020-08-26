@@ -1,0 +1,9 @@
+<%= form_for(@user) do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end%>
