@@ -17,6 +17,15 @@ class UsersController < ApplicationController
     redirect_to @user, notice: "Account successfully updated!"
   end
 
+  def new
+    @user = User.new
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+
+  end
+
 
 
   private
