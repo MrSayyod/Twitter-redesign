@@ -10,12 +10,19 @@
   </head>
 
   <body>
-  <% if flash[:notice] %>
-    <%= notice %>
-  <% else %>
-    <%= alert %>
-  <% end %>
+  <p>
+    <% if flash[:notice] %>
+      <%= notice %>
+    <% else %>
+      <%= alert %>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to 'Homepage', root_url %>
+  </p>
     <%= yield %>
+  <p>
     <%= link_to 'Sign up', new_user_path %>
+  </p>
   </body>
 </html>
