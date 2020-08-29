@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+before_action :require_sign_in, except: [:new, :create]
+before_action :require_correct_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -34,6 +37,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    session[:user_id] = nil
     redirect_to root_path
   end
 
