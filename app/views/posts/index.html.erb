@@ -1,0 +1,7 @@
+<h1>Football rumours</h1>
+<% @posts.each do |post| %>
+  <div>
+    <b><%= post.user.username %></b>
+    <%= post.body %>
+  </div>
+  <% end %>
