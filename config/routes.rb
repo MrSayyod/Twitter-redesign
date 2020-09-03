@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resource :session
   resources :users
   root "users#index"
