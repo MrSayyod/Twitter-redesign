@@ -2,9 +2,12 @@
   <%= link_to 'New Post', new_post_path %>
 <h3>Posts</h3>
   <% @posts.each do |post| %>
-    <div><%= post.body %>
-      <%= link_to 'Edit', edit_post_path %>
-      <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you sure to delete the post?"} %>
+    <div>
+      <%= post.body %>
+      <% if current_user?(@user) %>
+        <%= link_to 'Edit', edit_post_path %>
+        <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you sure to delete the post?"} %>
+      <% end %>
     </div>
   <% end %>
 <% if current_user?(@user) %>
