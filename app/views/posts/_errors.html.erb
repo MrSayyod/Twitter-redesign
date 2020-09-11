@@ -1,0 +1,9 @@
+<% if @post.errors.any? %>
+  <h5>Oooops! Something went wrong!</h5>
+  <h4>Please, correct the following <%= pluralize(@post.errors.size, 'error') %>:</h4>
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  </ul>
+<% end %>
