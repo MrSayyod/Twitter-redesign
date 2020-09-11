@@ -18,12 +18,22 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    @user = User.find(params[:id])
-    redirect_to @user
+    flash[:notice] = "Post successfully deleted!"
+    redirect_to root_path
   end
 
   def new
-    
+    @post = Post.new
+  end
+
+  def create
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to root_path, notice: "A new post successfully created!"
+    else
+      flash[:alert] = "Ooops, Something get wrong!"
+      render :new    
+    end  
   end
 
   private
