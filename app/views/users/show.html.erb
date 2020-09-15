@@ -1,5 +1,7 @@
 <h1><%= @user.username %></h1>
+<% if current_user?(@user) %>
   <%= link_to 'New Post', new_post_path %>
+<% end %>
 <h3>Posts</h3>
   <% @posts.each do |post| %>
     <div>
