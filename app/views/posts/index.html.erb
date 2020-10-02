@@ -11,6 +11,8 @@
     <% @users.each do |user| %>
       <ul>
         <li><%= link_to user.username, user %></li>
+        <li><%# render 'follow_button', :user => User.find(params[:id]) %></li>
+        <%# link_to '<button type = "button"> Follow</button>'.html_safe%>
       </ul>
     <% end %>
   </div>
