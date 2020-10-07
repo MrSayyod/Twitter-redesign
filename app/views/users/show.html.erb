@@ -1,3 +1,4 @@
+<%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
 <h1><%= @user.username %></h1>
 <div><%= render 'follow_button', :user => User.find(params[:id]) %></div>
 <% if current_user?(@user) %>

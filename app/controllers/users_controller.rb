@@ -47,6 +47,6 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
   private
 
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :avatar)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_124846) do
+ActiveRecord::Schema.define(version: 2020_10_07_111117) do
 
   create_table "followships", force: :cascade do |t|
     t.integer "follower_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_124846) do
     t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar"
   end
 
   add_foreign_key "posts", "users"

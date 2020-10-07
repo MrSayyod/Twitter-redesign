@@ -1,9 +1,12 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: { multipart: true }) do |f| %>
 <%= render 'errors' %>
   <div>
     <%= f.label :username %><br>
     <%= f.text_field :username, autofocus: true %><br>
   </div>
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
   <div>
     <%= f.submit %>
   </div>

@@ -234,6 +234,7 @@ DEPENDENCIES
   carrierwave (~> 2.1)
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  mini_magick (~> 4.10, >= 4.10.1)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   rubocop (~> 0.81.0)
