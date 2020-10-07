@@ -1,7 +1,4 @@
 class PostsController < ApplicationController
-  before_action :require_correct_user, only: [:edit, :update, :destroy]
-  
-  
   def index
     @posts = Post.all.order("created_at DESC")
     @post = Post.new
@@ -14,7 +11,7 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
-    @user = User.find(params[:id])
+    @user = @post.user
     @post.update(post_params)
     redirect_to @user, notice: "Post successfully updated!"
   end
