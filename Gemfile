@@ -25,6 +25,7 @@ gem 'rubocop', '~>0.81.0'
 gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 gem 'bootstrap', '~> 4.5', '>= 4.5.2'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
