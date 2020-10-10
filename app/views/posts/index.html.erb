@@ -1,16 +1,35 @@
-<h1>Football rumours</h1>
-<%= render 'form' %>
-<% @posts.each do |post| %>
-  <div>
-    <b><%= post.user.username %></b>
-    <%= post.body %>
-  </div>
-  <% end %>
-  <div>
-    <h4>Who to follow</h4>
-    <% @users.each do |user| %>
-      <ul>
-        <li><%= link_to user.username, user %></li>
-      </ul>
-    <% end %>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <section>
+    <%= avatar_for(current_user) %>
+    <%= current_user.username %>
+    <div>
+      <span> <%= pluralize(current_user.following.count, 'following') %> </span>
+      <span> <%= pluralize(current_user.followers.count, 'follower') %> </span>
+    </div>
+  </section>
+  <section>
+      <h1>Football rumours</h1>
+    <%= render 'form' %>
+    <% @posts.each do |post| %>
+      <div>
+        <b><%= post.user.username %></b>
+        <%= post.body %>
+      </div>
+      <% end %>
+      <div>
+        <h4>Who to follow</h4>
+        <% @users.each do |user| %>
+          <ul>
+            <li><%= link_to user.username, user %></li>
+          </ul>
+        <% end %>
+      </div>
+  </section>
+</body>
+</html>

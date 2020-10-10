@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_sign_in
+
   def index
     @posts = Post.all.order("created_at DESC")
     @post = Post.new
