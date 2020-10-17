@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="container">
   <p>
     <% if flash[:notice] %>
       <%= notice %>
@@ -18,7 +18,7 @@
     <% end %>
   </p>
   <p>
-    <%= link_to 'Homepage', root_url %>
+    <%= link_to 'Football Rumours', root_url %>
   </p>
     <%= yield %>
   <p>

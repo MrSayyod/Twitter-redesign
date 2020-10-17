@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <section>
+<div class="d-flex">
+  <section class="left-section col-3">
     <%= avatar_for(current_user) %>
     <%= current_user.username %>
+    <div id="count" class = "d-flex">
     <div>
-      <span> <%= pluralize(current_user.following.count, 'following') %> </span>
+      <p class="whiter"><%= current_user.following.count %></p>
+      <h6>following</h6>
+    </div>
+    <div>
+      <span> <%# pluralize(current_user.following.count, 'following', class="whiter") %> </span>
       <span> <%= pluralize(current_user.followers.count, 'follower') %> </span>
     </div>
+    </div>
+    <div>
+      <ul>
+        <li><%= link_to 'Home' %></li>
+        <li><%= link_to 'Connect'%></li>
+        <li><%= link_to 'Discover'%></li>
+        <li><%= link_to 'Profile', current_user %></li>
+        <li><%= link_to 'Statistics'%></li>
+      </ul>
+    </div>
   </section>
-  <section>
-      <h1>Football rumours</h1>
+  <section class="col-9">
+      <h1></h1>
     <%= render 'form' %>
     <% @posts.each do |post| %>
       <div>
@@ -31,5 +40,4 @@
         <% end %>
       </div>
   </section>
-</body>
-</html>
+</div>
