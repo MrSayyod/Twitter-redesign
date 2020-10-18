@@ -14,8 +14,11 @@
 
   @import "bootstrap";
 
-  $left-background: #213246;
+  $left-background: #1B2A3D;
 
+  * {
+    border: 1px solid green;
+  }
  .avatar-image {
    border-radius: 50%;
  }
@@ -31,3 +34,36 @@
  .whiter {
    color: #bfccd8;
  }
+
+ .namer {
+   color: #5C7085
+ }
+
+ .grayer {
+   color: #1B2A3D;
+ }
+
+ ul > {
+   li {
+     text-transform: uppercase;
+     color: #5B7186;
+     list-style-type: none;
+     margin: 10px;
+     font-weight: bold;
+     
+   }
+   li:hover {
+     background-color: #51A5E5;
+     a {
+      color: white; 
+      text-decoration: none;
+    }
+   }
+
+  }
+
+//  a:hover {
+//    text-decoration: none;
+//    background-color: #51A5E5;
+//    color: white;
+//  }

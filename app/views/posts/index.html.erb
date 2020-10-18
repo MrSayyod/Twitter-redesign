@@ -1,19 +1,23 @@
 <div class="d-flex">
   <section class="left-section col-3">
-    <%= avatar_for(current_user) %>
-    <%= current_user.username %>
-    <div id="count" class = "d-flex">
-    <div>
-      <p class="whiter"><%= current_user.following.count %></p>
-      <h6>following</h6>
+    <div class='grayer'>
+      <div class='d-flex'>
+        <%= avatar_for(current_user) %>
+        <h4 class='namer m-auto'><%= current_user.username %></h4>
+      </div>
+      <div id="count" class = "d-flex justify-content-center m-2">
+        <div class="whiter">
+          <p class='m-auto text-center'><%= current_user.following.count %></p>
+          <h6>following</h6>
+        </div>
+        <div class="whiter">
+          <p class='m-auto text-center'><%= current_user.followers.count %></p>
+          <h6>followers</h6>
+        </div>
+    </div>
     </div>
     <div>
-      <span> <%# pluralize(current_user.following.count, 'following', class="whiter") %> </span>
-      <span> <%= pluralize(current_user.followers.count, 'follower') %> </span>
-    </div>
-    </div>
-    <div>
-      <ul>
+      <ul class='list'>
         <li><%= link_to 'Home' %></li>
         <li><%= link_to 'Connect'%></li>
         <li><%= link_to 'Discover'%></li>
