@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="container">
+  <body>
   <p>
     <% if flash[:notice] %>
       <%= notice %>
@@ -18,17 +18,57 @@
     <% end %>
   </p>
   <p>
-    <%= link_to 'Football Rumours', root_url %>
-  </p>
-    <%= yield %>
-  <p>
-  <% if current_user %>
-    <%= link_to(avatar_for(current_user, size: 35), current_user) %><%= current_user.username %>
-    <%= link_to "Sign out", session_path, method: :delete, notice: "Signed out!" %>
-  <% else %>
-    <%= link_to 'Sign up', new_user_path %>
-    <%= link_to 'Sign in', new_session_path %>
-  <% end %>
+    <% if current_user %>
+      <div class="d-flex">
+        <section class="left-section col-3">
+          <div class='grayer'>
+            <div class='d-flex'>
+              <%= avatar_for(current_user) %>
+              <h4 class='namer m-auto'><%= current_user.username %></h4>
+            </div>
+            <div id="count" class = "d-flex justify-content-around m-2">
+              <div class="whiter col-6">
+                <p class='m-auto text-center'><%= current_user.following.count %></p>
+                <h6>following</h6>
+              </div>
+              <div class="whiter col-6">
+                <p class='m-auto text-center'><%= current_user.followers.count %></p>
+                <h6>followers</h6>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ul class='list'>
+              <li><%= fa_icon "home", class: "w-25 text-center" %><%= link_to 'Home' %></li>
+              <li><%= fa_icon "at", class: "w-25 text-center" %><%= link_to 'Connect'%></li>
+              <li><%= fa_icon "hashtag", class: "w-25 text-center" %><%= link_to 'Discover'%></li>
+              <li><%= fa_icon "user", class: "w-25 text-center" %><%= link_to 'Profile', current_user %></li>
+              <li><%= fa_icon "globe", class: "w-25 text-center" %><%= link_to 'Statistics'%></li>
+            </ul>
+          </div>
+        </section>
+        <section class="col-9 with-background p-0">
+          <nav class="d-flex justify-content-between">
+            <div>
+              <p>
+                <%= link_to root_url, class: "white container" do %>
+                  <i class="fa fa-home"></i>
+                <% end %>
+              </p>
+            </div>
+            <div class='rounded'>
+              <%= link_to(avatar_for(current_user, size: 35), current_user) %><%= current_user.username %>
+              <%= link_to "Sign out", session_path, method: :delete, notice: "Signed out!" %>
+            </div>
+          </nav>    
+          <div><%= yield %></div>
+        </section>
+      </div>
+    <% else %>
+        <%= link_to 'Sign up', new_user_path %>
+        <%= link_to 'Sign in', new_session_path %>
+  <%= yield %>
+    <% end %>
   </p>
   </body>
 </html>

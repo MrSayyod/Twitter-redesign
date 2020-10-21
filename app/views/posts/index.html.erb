@@ -1,31 +1,5 @@
 <div class="d-flex">
-  <section class="left-section col-3">
-    <div class='grayer'>
-      <div class='d-flex'>
-        <%= avatar_for(current_user) %>
-        <h4 class='namer m-auto'><%= current_user.username %></h4>
-      </div>
-      <div id="count" class = "d-flex justify-content-center m-2">
-        <div class="whiter">
-          <p class='m-auto text-center'><%= current_user.following.count %></p>
-          <h6>following</h6>
-        </div>
-        <div class="whiter">
-          <p class='m-auto text-center'><%= current_user.followers.count %></p>
-          <h6>followers</h6>
-        </div>
-    </div>
-    </div>
-    <div>
-      <ul class='list'>
-        <li><%= fa_icon "camera-retro" %><%= link_to 'Home' %></li>
-        <li><%= link_to 'Connect'%></li>
-        <li><%= link_to 'Discover'%></li>
-        <li><%= link_to 'Profile', current_user %></li>
-        <li><%= link_to 'Statistics'%></li>
-      </ul>
-    </div>
-  </section>
+
   <section class="col-9">
       <h1></h1>
     <%= render 'form' %>
@@ -37,10 +11,13 @@
       <% end %>
       <div>
         <h4>Who to follow</h4>
-        <% @users.each do |user| %>
+        <% current_user.following.each do |person| %>
+        <% person.following.each do |ffuser| %>
           <ul>
-            <li><%= link_to user.username, user %></li>
+            <%= avatar_for(ffuser) %>
+            <li><%= link_to ffuser.username, ffuser %> followed by <%= person.username %> </li>
           </ul>
+          <% end %>
         <% end %>
       </div>
   </section>
