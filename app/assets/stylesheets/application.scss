@@ -12,10 +12,12 @@
  *
  */
 
+
   @import "bootstrap";
   @import "font-awesome";
 
   $left-background: #1B2A3D;
+  $text-color: #5C7085;
 
   a, a:hover {
     text-decoration: none;
@@ -47,9 +49,14 @@
 
  ul > {
    li {
+     list-style-type: none;
+   }
+ }
+
+ .list > {
+   li {
      text-transform: uppercase;
      color: #5B7186;
-     list-style-type: none;
      margin: 10px;
      font-weight: bold;
      a {
@@ -81,6 +88,19 @@
     border-radius: 50%;
     width: 35px;
     margin: 5px;
+  }
+  .upper-section {
+    li:hover {
+    border-bottom: 5px solid #53A7E7;
+  }
+}
+  .index {
+    background-color: #F5F6F8;
+  }
+  textarea {
+    width: 100%;
+    border-radius: 10px;
+    height: 40px;
   }
 // * {
 //     border: 1px solid green;

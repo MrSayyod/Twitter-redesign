@@ -1,14 +1,26 @@
-<div class="d-flex">
+<div class="d-flex index">
 
-  <section class="col-9">
-      <h1></h1>
-    <%= render 'form' %>
+  <section class="col-9 border-right">
+    <h1></h1>
+    <div class="border-bottom">
+      <ul class="d-flex upper-section text-left m-0 p-0 namer">
+        <li>Tweets</li>
+        <li class="mx-2">Photos</li>
+        <li>Videos</li>
+      </ul>
+    </div>
+    <section class="bg-white px-4 py-2 my-4"><%= render 'form' %></section>
+    <article class="bg-white px-4 py-2 my-4">
     <% @posts.each do |post| %>
       <div>
+      <%= avatar_for(post.user) %>
         <b><%= post.user.username %></b>
         <%= post.body %>
       </div>
       <% end %>
+      </article>
+  </section>
+  <section class="col-3">
       <div>
         <h4>Who to follow</h4>
         <% current_user.following.each do |person| %>

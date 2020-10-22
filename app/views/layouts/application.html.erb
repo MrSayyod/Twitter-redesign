@@ -56,8 +56,8 @@
                 <% end %>
               </p>
             </div>
-            <div class='rounded'>
-              <%= link_to(avatar_for(current_user, size: 35), current_user) %><%= current_user.username %>
+            <div class="mr-4">
+              <span class="rounded"><%= link_to(avatar_for(current_user, size: 35), current_user) %></span><span><%= current_user.username %></span>
               <%= link_to "Sign out", session_path, method: :delete, notice: "Signed out!" %>
             </div>
           </nav>    
