@@ -1,6 +1,7 @@
 <div class="d-flex">
 <section class="col-9 border-right">
     <h1></h1>
+    <div class="cover-area my-2"><%= image_tag 'default-cover' %></div>
     <div class="border-bottom">
       <ul class="d-flex upper-section text-left m-0 p-0 namer">
         <li><%= link_to 'Rumours'%></li>
@@ -12,22 +13,9 @@
       </ul>
     </div>
 <% if current_user?(@user) %>
-  <%= link_to 'New Post', new_post_path %>
+    <section class="bg-white px-4 py-2 my-4"><%= render 'posts/form' %></section>
 <% end %>
-<h3>Posts</h3>
-  <% @posts.each do |post| %>
-    <div>
-      <%= post.body %>
-      <% if current_user?(@user) %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you sure to delete the post?"} %>
-      <% end %>
-    </div>
-  <% end %>
-<% if current_user?(@user) %>
-  <p><%= link_to 'Edit account', edit_user_path %></p>
-  <p><%= link_to 'Delete account', user_path, method: :delete, data: { confirm: "Are you sure to delete your account?" } %></p>
-<% end %>
+<h3 class="ml-4">All rumours</h3>
     <article class="bg-white px-4 py-2 my-4 ">
     <% @posts.each do |post| %>
       <div class="d-flex border-bottom border-top my-2 py-2">
@@ -35,25 +23,58 @@
       <div class="d-flex flex-column ml-2">
         <b><%= link_to post.user.username, post.user %></b>
         <%= post.body %>
+        <div>
+      <% if current_user?(@user) %>
+        <%= link_to edit_post_path(post) do %>
+          <%= fa_icon "edit" %>
+        <% end %>
+        <%= link_to post_path(post), method: :delete, class: "text-danger",  data: {confirm: "Are you sure to delete the post?"} do %>
+          <%= fa_icon "trash" %>
+        <% end %>
+      <% end %>
+      </div>
       </div>
       </div>
       <% end %>
       </article>
   </section>
   <section class="col-3">
-      <div>
-      <%= avatar_for(@user) %>
-<h1><%= @user.username %></h1>
-<div><%= render 'follow_button', :user => User.find(params[:id]) %></div>
-        <h4>Who to follow</h4>
-        <%= who_to_follow %>
-        <% list_followers.each do |suggested_person| %>
-        <div class="my-2 d-flex justify-content-between">
-          <div class="avatar-for-posts col-3 p-0"><%= avatar_for(suggested_person) %></div>
-          <div class="col-9"><span><%= link_to suggested_person.username, suggested_person %></span><span> followed </span><span> by </span><span> <%= suggested_person.followers.first.username %></span></div>
-        </div>
-        <% end %>
+    <div class="container my-2">
+      <div class="text-center"> 
+        <div class="profile-avatar"><%= avatar_for(@user, size: 100)%></div>
+        <h1><%= @user.username %></h1>
+        <div id="count" class = "d-flex justify-content-around m-2 table-bordered">
+              <div class="namer col-4 text-center p-0">
+                <p class='m-auto'><%= @user.posts.count %></p>
+                <h6 class="small">rumours</h6>
+              </div>
+              <div class="namer col-4 text-center p-0 border-right border-left">
+                <p class='m-auto'><%= @user.following.count %></p>
+                <h6 class="small">following</h6>
+              </div>
+              <div class="namer col-4 text-center p-0">
+                <p class='m-auto'><%= @user.followers.count %></p>
+                <h6 class="small">followers</h6>
+              </div>
+            </div>
+        <div><%= render 'follow_button', :user => User.find(params[:id]) %></div>
+      <% if current_user?(@user) %>
+        <p><%= link_to 'Edit account', edit_user_path %></p>
+        <p><%= link_to 'Delete account', user_path, method: :delete, data: { confirm: "Are you sure to delete your account?" } %></p>
       </div>
+      <% end %>
+      <h4 class="border-top border-bottom my-2 py-2">Followed by </h4>
+      <% if @user.followers.any? %>
+      <% @user.followers.each do |follower| %>
+        <div class="my-2 d-flex justify-content-between">
+            <div class="avatar-for-posts col-4 p-0"><%= avatar_for(follower) %></div>
+            <h5 class="col-8 d-flex align-items-center font-weight-bold"><span><%= link_to follower.username, follower %></span></h5>
+        </div>
+      <% end %>
+      <% else %>
+        <h4>You have no followers</h4>
+      <% end %>
+    </div>
   </section>
 
 </div>

@@ -126,6 +126,23 @@
     flex-wrap: wrap;
     width: 100%;
   }
-* {
-    border: 1px solid green;
+
+  .profile-avatar {
+  width: 135px;
+  margin: auto;
+   img {
+    border-radius: 90%;
+    width: 100%;
+    height: 135px;}
   }
+  .cover-area {
+    width: 720px;
+    height: 200px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+// * {
+//     border: 1px solid green;
+//   }
