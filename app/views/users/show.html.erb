@@ -1,6 +1,16 @@
-<%= avatar_for(@user) %>
-<h1><%= @user.username %></h1>
-<div><%= render 'follow_button', :user => User.find(params[:id]) %></div>
+<div class="d-flex">
+<section class="col-9 border-right">
+    <h1></h1>
+    <div class="border-bottom">
+      <ul class="d-flex upper-section text-left m-0 p-0 namer">
+        <li><%= link_to 'Rumours'%></li>
+        <li class="mx-2"><%= link_to 'Photos'%></li>
+        <li><%= link_to 'Following'%></li>
+        <li class="mx-2"><%= link_to 'Followers'%></li>
+        <li><%= link_to 'Favorites'%></li>
+        <li class="mx-2"><%= link_to 'Lists'%></li>
+      </ul>
+    </div>
 <% if current_user?(@user) %>
   <%= link_to 'New Post', new_post_path %>
 <% end %>
@@ -18,3 +28,32 @@
   <p><%= link_to 'Edit account', edit_user_path %></p>
   <p><%= link_to 'Delete account', user_path, method: :delete, data: { confirm: "Are you sure to delete your account?" } %></p>
 <% end %>
+    <article class="bg-white px-4 py-2 my-4 ">
+    <% @posts.each do |post| %>
+      <div class="d-flex border-bottom border-top my-2 py-2">
+      <div class="avatar-for-posts"><%= avatar_for(post.user)%></div>
+      <div class="d-flex flex-column ml-2">
+        <b><%= link_to post.user.username, post.user %></b>
+        <%= post.body %>
+      </div>
+      </div>
+      <% end %>
+      </article>
+  </section>
+  <section class="col-3">
+      <div>
+      <%= avatar_for(@user) %>
+<h1><%= @user.username %></h1>
+<div><%= render 'follow_button', :user => User.find(params[:id]) %></div>
+        <h4>Who to follow</h4>
+        <%= who_to_follow %>
+        <% list_followers.each do |suggested_person| %>
+        <div class="my-2 d-flex justify-content-between">
+          <div class="avatar-for-posts col-3 p-0"><%= avatar_for(suggested_person) %></div>
+          <div class="col-9"><span><%= link_to suggested_person.username, suggested_person %></span><span> followed </span><span> by </span><span> <%= suggested_person.followers.first.username %></span></div>
+        </div>
+        <% end %>
+      </div>
+  </section>
+
+</div>
