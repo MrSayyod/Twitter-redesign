@@ -27,12 +27,12 @@
               <h4 class='namer m-auto'><%= current_user.username %></h4>
             </div>
             <div id="count" class = "d-flex justify-content-around m-2">
-              <div class="whiter col-6">
-                <p class='m-auto text-center'><%= current_user.following.count %></p>
+              <div class="whiter col-6 text-center">
+                <p class='m-auto'><%= current_user.following.count %></p>
                 <h6>following</h6>
               </div>
-              <div class="whiter col-6">
-                <p class='m-auto text-center'><%= current_user.followers.count %></p>
+              <div class="whiter col-6 text-center">
+                <p class='m-auto'><%= current_user.followers.count %></p>
                 <h6>followers</h6>
               </div>
             </div>

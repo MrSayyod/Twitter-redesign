@@ -24,4 +24,32 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user?
+
+  def who_to_follow
+    @following_list = []
+    current_user.following.each do | followings |
+      followings.following.each do | refollowing |
+        @following_list.push(refollowing)
+        @following_list.uniq!
+        if current_user.following.include?(refollowing)
+          @following_list.delete(refollowing)
+        end
+      end
+    end
+    if @following_list.include?(current_user)
+      @following_list.delete(current_user)
+    end
+    @following_list.uniq!
+  end
+  
+  helper_method :who_to_follow
+  
+  def list_followers
+    @following_list.each do |following|
+      following.username
+    end
+  end
+
+  helper_method :list_followers
 end
+

@@ -5,6 +5,8 @@ class PostsController < ApplicationController
     @posts = Post.all.order("created_at DESC")
     @post = Post.new
     @users = User.all
+    # @following_list = Array.new
+    # @uniq_list = @following_list.uniq!
   end
 
   def edit
