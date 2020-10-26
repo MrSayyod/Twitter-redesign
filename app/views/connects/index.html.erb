@@ -1,5 +1,7 @@
 <div class="container">
-<h1><%= pluralize(@users.size, "User") %></h1>
+<%= who_to_follow %>
+<%# exclude_followers(who_to_connect) %>
+<h1><%# pluralize(exclude_followers(who_to_connect).size, "person") %> to connect</h1>
 <ul>
 <%# who_to_connect %>
 <% who_to_connect.each do |user| %>
