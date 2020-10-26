@@ -39,8 +39,8 @@
           </div>
           <div>
             <ul class='list'>
-              <li><%= fa_icon "home", class: "w-25 text-center" %><%= link_to 'Home' %></li>
-              <li><%= fa_icon "at", class: "w-25 text-center" %><%= link_to 'Connect'%></li>
+              <li><%= fa_icon "home", class: "w-25 text-center" %><%= link_to 'Home', root_path %></li>
+              <li><%= fa_icon "at", class: "w-25 text-center" %><%= link_to 'Connect', users_path%></li>
               <li><%= fa_icon "hashtag", class: "w-25 text-center" %><%= link_to 'Discover'%></li>
               <li><%= fa_icon "user", class: "w-25 text-center" %><%= link_to 'Profile', current_user %></li>
               <li><%= fa_icon "globe", class: "w-25 text-center" %><%= link_to 'Statistics'%></li>
@@ -52,7 +52,7 @@
             <div>
               <p>
                 <%= link_to root_url, class: "white container" do %>
-                  <i class="fa fa-home"></i>
+                <%= fa_icon "home" %>
                 <% end %>
               </p>
             </div>

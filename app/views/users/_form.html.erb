@@ -2,12 +2,13 @@
 <%= render 'errors' %>
   <div>
     <%= f.label :username %><br>
-    <%= f.text_field :username, autofocus: true %><br>
+    <p><%= f.text_field :username, autofocus: true %><br></p>
   </div>
   <p>
-    <%= f.file_field :avatar %>
+    <%= f.label :avatar, "Select an image as a profile picture" %> <br>
+    <%= f.file_field :avatar, class: "btn btn-light"  %>
   </p>
   <div>
-    <%= f.submit %>
+    <%= f.submit class: "btn-primary btn "%>
   </div>
 <% end%>
