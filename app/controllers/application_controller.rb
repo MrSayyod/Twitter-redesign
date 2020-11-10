@@ -42,36 +42,6 @@ class ApplicationController < ActionController::Base
   
   helper_method :who_to_follow
   
-  def who_to_connect
-    @connect_list = []
-    @users = User.all
-    @users.each do | user |
-      @connect_list.push(user)
-    end
-    exclude_current_user(@connect_list)
-    @connect_list
-  end
-  
-  helper_method :who_to_connect
-
-  def exclude_followers(list)
-    current_user.following.each do |following| 
-      if list.include?(following)
-        list.delete(following)
-      end
-    end    
-    list
-  end
-  
-  helper_method :exclude_followers(list)
-
-  def list_connections
-    who_to_connect.each do |connect|
-      connect
-    end
-  end
-
-  helper_method :list_connections
 
   def list_followers
     @following_list.each do |following|

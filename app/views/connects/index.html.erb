@@ -1,14 +1,10 @@
 <div class="container">
-<%= who_to_follow %>
-<%# exclude_followers(who_to_connect) %>
-<h1><%# pluralize(exclude_followers(who_to_connect).size, "person") %> to connect</h1>
-<ul>
-<%# who_to_connect %>
-<% who_to_connect.each do |user| %>
-<div class="d-flex">
-<p class="avatar-for-posts mr-2"><%= avatar_for(user) %></p>
-<li><%= link_to user.username, user %></li>
-</div>
-<% end %>
-</ul>
+  <ul class="list-unstyled">
+    <% @users.each do |user|%>
+      <div class="d-flex">
+        <p class="avatar-for-posts mr-2"><%= avatar_for(user) %></p>
+        <li><%= link_to user.username, user %></li>
+      </div>
+    <% end %>
+  </ul>
 </div>
