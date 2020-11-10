@@ -42,6 +42,18 @@ class ApplicationController < ActionController::Base
   
   helper_method :who_to_follow
   
+  def who_to_connect
+    user_list = []
+    User.all.each do |user|
+      user_list.push(user)
+    end
+    exclude_current_user(user_list)
+    exclude_current_following(user_list)
+    user_list
+  end
+  
+  helper_method :who_to_connect
+
 
   def list_followers
     @following_list.each do |following|
@@ -59,5 +71,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :exclude_current_user
   
+  def exclude_current_following(list)
+    current_user.following.each do | followings |
+      list.delete(followings)
+    end
+  end
+
 end
 
