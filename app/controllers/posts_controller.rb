@@ -2,11 +2,10 @@ class PostsController < ApplicationController
   before_action :require_sign_in
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    # @posts = Post.all.order("created_at DESC")
+    @posts = timeline_posts
     @post = Post.new
     @users = User.all
-    # @following_list = Array.new
-    # @uniq_list = @following_list.uniq!
   end
 
   def edit
@@ -42,6 +41,13 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def timeline_posts
+    @user_posts = Post.all.where(user: current_user)
+    @followers_posts = Post.all.where(user: current_user.following)
+    @post_list = @user_posts + @followers_posts
+    @post_list
+  end
 
   def post_params
     params.require(:post).permit(:body)

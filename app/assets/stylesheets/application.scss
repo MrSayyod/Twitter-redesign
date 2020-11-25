@@ -143,6 +143,29 @@
       height: 100%;
     }
   }
-// * {
-//     border: 1px solid green;
-//   }
+
+  .flash {
+    // padding: 10px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: #ffc 0 0 4px;
+    // position: relative;
+    // padding: 0.75rem 1.25rem;
+    // margin-bottom: 1rem;
+    // border: 1px solid transparent;
+    border-radius: 0.25rem;
+
+    &.flash_notice {
+      background-color: rgb(137, 245, 137);
+    }
+
+    &.flash_alert {
+      background-color: rgb(233, 138, 138);
+      margin: 0;
+      padding: 0;
+    }
+  }
+* {
+    border: 1px solid green;
+  }

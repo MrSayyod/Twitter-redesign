@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user
       session[:user_id] = user.id
-      flash[:notice] = "Welcome back #{user.username}"
+      flash[:notice] = "Welcome back, #{user.username}"
       redirect_to(session[:intended_url] || user)
       session[:intended_url] = nil
     else
