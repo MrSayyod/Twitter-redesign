@@ -1,11 +1,14 @@
-<h1>Sign in</h1>
-<%= form_tag(session_path) do %>
-  <p>
-    <%= label_tag :username %>
-    <%= text_field_tag :username, nil, autofocus: true %>
-  </p>
-  <p>
-    <%= submit_tag "Sign In" %>
-  </p>
-
-<% end %>
+<div class="wrapper">
+  <fieldset class="field_for_sign_in">
+    <h1>Sign in</h1><hr>
+    <%= form_tag(session_path) do %>
+      <p>
+        <%= label_tag :username %> <br>
+        <%= text_field_tag :username, nil, class: "field_for_username", autofocus: true, placeholder: "Type your username" %>
+      </p>
+      <p>
+        <%= submit_tag "Log In", class: "btn btn-primary" %>
+      </p>
+    <% end %>
+  </fieldset>
+</div>

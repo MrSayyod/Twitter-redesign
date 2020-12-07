@@ -67,8 +67,10 @@
         </section>
       </div>
     <% else %>
-        <%= link_to 'Sign up', new_user_path %>
-        <%= link_to 'Sign in', new_session_path %>
+      <nav class="not_logged_nav d-flex justify-content-end">
+        <button class="sign_buttons m-2"> <%= link_to 'Create account', new_user_path %> </button>
+        <button class="sign_buttons m-2"> <%= link_to 'Log in', new_session_path %> </button>
+      </nav>
   <%= yield %>
     <% end %>
   </div>

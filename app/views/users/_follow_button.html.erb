@@ -4,12 +4,12 @@
     <%# render 'unfollow' %>
       <%= form_for(current_user.active_relationships.build(followed_id: @user.id), remote: true ) do |f| %>
       <%= f.hidden_field :followed_id %>
-        <%= f.submit "Follow" %>
+        <%= f.submit "Follow", class: "btn btn-primary" %>
       <% end %>
     <% else %>
     <%# render 'follow' %>
       <%= form_for(current_user.active_relationships.find_by_followed_id(@user), html: { method: :delete }, remote: true) do |f| %>
-        <%= f.submit "Unfollow", class: "btn btn-primary" %>
+        <%= f.submit "Unfollow", class: "btn btn-secondary" %>
       <% end %>
     <% end %>
   </div>

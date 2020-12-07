@@ -72,7 +72,11 @@
         </div>
       <% end %>
       <% else %>
-        <h4>You have no followers</h4>
+        <% if current_user?(@user) %>
+          <h4>You have no followers</h4>
+        <% else %>
+          <h4><%= @user.username %> have no followers</h4>
+        <% end %>
       <% end %>
     </div>
   </section>

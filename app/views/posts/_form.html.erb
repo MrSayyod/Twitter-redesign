@@ -1,12 +1,14 @@
-<%= render 'errors' %>
+<div>
+  <%= render 'errors', class: "mx-2" %>
+</div>
 <%= form_for(@post) do |f| %>
   <fieldset>
-  <%= f.label :body, "Share with rumours:"  %><br>
+  <%= f.label :body, "Share with rumours:", class: "mx-2"  %><br>
   <div class="rounded">
-  <%= f.text_area :body, autofocus:true, placeholder: "Compose a new rumour", class: "my-2 p-1" %>
+  <%= f.text_area :body, autofocus:true, placeholder: "Compose a new rumour", class: "compose_area m-2 px-1" %>
   </div>
   </fieldset>
   <div>
-  <%= f.submit "Post", class: "btn btn-primary w-25" %>
+  <%= f.submit "Post", class: "btn btn-primary w-25 mx-2" %>
   </div>
   <% end %>
