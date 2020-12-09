@@ -15,8 +15,18 @@ RSpec.describe User, type: :model do
     it { should have_many(:followers).through(:passive_relationships).source(:follower) }
   end
 
+  describe 'user class methods' do
+    before(:each) do
+      @user1 = User.create!(username: 'Harry')
+      @user2 = User.create!(username: 'Ron')
+    end
 
-
+    describe 'followship' do
+      it 'checks if current user has any followers' do
+        expect(@user1.following?(@user2)).to eq(false)
+      end
+    end
+  end
 
 
 
