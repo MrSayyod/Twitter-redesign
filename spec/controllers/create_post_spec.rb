@@ -10,10 +10,9 @@ RSpec.feature 'Create post', type: :feature do
     end
 
     it 'should create a new post' do
-      fill_in 'post_body', with: "Hello World!"
+      fill_in 'post_body', with: 'Hello World!'
       click_button 'Post'
       expect(page).to have_content('Hello World!')
     end
-
   end
 end

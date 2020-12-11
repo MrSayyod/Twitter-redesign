@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :require_sign_in, except: [:new, :create]
-before_action :require_correct_user, only: [:edit, :update, :destroy]
+  before_action :require_sign_in, except: %i[new create]
+  before_action :require_correct_user, only: %i[edit update destroy]
 
   def index
     @users = User.all
@@ -8,7 +8,7 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.order("created_at DESC")
+    @posts = @user.posts.all.order('created_at DESC')
     @post = Post.new
   end
 
@@ -19,7 +19,7 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to @user, notice: "Account successfully updated!"
+    redirect_to @user, notice: 'Account successfully updated!'
   end
 
   def new
@@ -42,8 +42,6 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
     session[:user_id] = nil
     redirect_to root_path
   end
-
-
 
   private
 

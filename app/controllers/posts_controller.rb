@@ -11,18 +11,18 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     @user = @post.user
     @post.update(post_params)
-    redirect_to @user, notice: "Post successfully updated!"
+    redirect_to @user, notice: 'Post successfully updated!'
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:notice] = "Post successfully deleted!"
+    flash[:notice] = 'Post successfully deleted!'
     redirect_to root_path
   end
 
@@ -33,11 +33,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to root_path, notice: "A new post successfully created!"
+      redirect_to root_path, notice: 'A new post successfully created!'
     else
-      flash[:alert] = "Ooops, Something get wrong!"
-      render :new    
-    end  
+      flash[:alert] = 'Ooops, Something get wrong!'
+      render :new
+    end
   end
 
   private

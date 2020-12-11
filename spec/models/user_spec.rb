@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "validations" do
+  describe 'validations' do
     it { should validate_presence_of(:username) }
-    it { should validate_length_of(:username).is_at_least(2) } 
-    it { should validate_uniqueness_of(:username) } 
+    it { should validate_length_of(:username).is_at_least(2) }
+    it { should validate_uniqueness_of(:username) }
   end
-  
-  describe "associations" do
+
+  describe 'associations' do
     it { should have_many(:posts) }
     it { should have_many(:active_relationships).with_foreign_key(:follower_id).class_name('Followship') }
     it { should have_many(:passive_relationships).with_foreign_key(:followed_id).class_name('Followship') }
@@ -27,10 +27,6 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-
-
-
 
   # let(:user) do
   #   User.create(

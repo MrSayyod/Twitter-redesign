@@ -1,12 +1,10 @@
 module ApplicationHelper
-
   # def uniqued_list
   #   if @uniq_list.include?(current_user)
   #     @uniq_list.delete(current_user)
-  #   end 
+  #   end
   #   @uniq_list
   # end
-
 
   # <% current_user.following.each do |person| %>
   #   <% person.following.each do |ffuser| %>
@@ -23,5 +21,4 @@ module ApplicationHelper
   #     <% end %>
   #     <% end %>
   #   <% end %>
-
 end

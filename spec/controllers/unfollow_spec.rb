@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.feature 'Follow user', type: :feature do
   # describe
   let(:user1) do
-    User.create!( username: 'Harry' )
+    User.create!(username: 'Harry')
   end
-  
+
   let(:user2) do
-    User.create!( username: 'Ron' )
+    User.create!(username: 'Ron')
   end
-  
+
   describe 'Following a user' do
-  before(:each) do
+    before(:each) do
       user1
       user2
       visit 'session/new'

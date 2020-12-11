@@ -6,17 +6,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_sign_in
-    unless current_user
-      session[:intended_url] = request.url
-      redirect_to new_session_path, alert: "Please, sign in first!"
-    end
+    return if current_user
+
+    session[:intended_url] = request.url
+    redirect_to new_session_path, alert: 'Please, sign in first!'
   end
 
   def require_correct_user
     @user = User.find(params[:id])
-    unless current_user?(@user)
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user?(@user)
   end
 
   def current_user?(user)
@@ -27,21 +25,19 @@ class ApplicationController < ActionController::Base
 
   def who_to_follow
     @following_list = []
-    current_user.following.each do | followings |
-      followings.following.each do | refollowing |
+    current_user.following.each do |followings|
+      followings.following.each do |refollowing|
         @following_list.push(refollowing)
         @following_list.uniq!
-        if current_user.following.include?(refollowing)
-          @following_list.delete(refollowing)
-        end
+        @following_list.delete(refollowing) if current_user.following.include?(refollowing)
       end
     end
     exclude_current_user(@following_list)
     @following_list.uniq!
   end
-  
+
   helper_method :who_to_follow
-  
+
   def who_to_connect
     user_list = []
     User.all.each do |user|
@@ -51,31 +47,24 @@ class ApplicationController < ActionController::Base
     exclude_current_following(user_list)
     user_list
   end
-  
+
   helper_method :who_to_connect
 
-
   def list_followers
-    @following_list.each do |following|
-      following.username
-    end
+    @following_list.each(&:username)
   end
 
   helper_method :list_followers
 
   def exclude_current_user(list)
-    if list.include?(current_user)
-      list.delete(current_user)
-    end
+    list.delete(current_user) if list.include?(current_user)
   end
 
   helper_method :exclude_current_user
-  
+
   def exclude_current_following(list)
-    current_user.following.each do | followings |
+    current_user.following.each do |followings|
       list.delete(followings)
     end
   end
-
 end
-
