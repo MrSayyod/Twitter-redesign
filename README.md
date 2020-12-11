@@ -1,3 +1,5 @@
+[![hire-badge](https://img.shields.io/badge/Consult%2FHire%20Sayyod-Contact%20with%20Sayyod-brightgreen)](mailto:ssayyod@gmail.com)[![Twitter Follow](https://img.shields.io/twitter/follow/sayyodsaidov?label=Follow%20Sayyod%20on%20Twitter&style=social)](https://twitter.com/sayyodsaidov)
+
 # Twitter redesign
 Twitter redesign [Project by Microverse] (Created by Sayyod Saidov)
 
@@ -15,6 +17,9 @@ User can manage signups, share his opinions with other by posting them. User can
 
 [Live version](https://obscure-oasis-18737.herokuapp.com/session/new)
 
+## Video Description
+
+[Twitter-redesign](https://www.loom.com/share/1356114cfccc4a7dad89580c7fc45b49)
 
 ## Additional gems
 
