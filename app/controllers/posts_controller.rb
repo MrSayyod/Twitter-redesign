@@ -42,13 +42,6 @@ class PostsController < ApplicationController
 
   private
 
-  def timeline_posts
-    @user_posts = Post.all.where(user: current_user)
-    @followers_posts = Post.all.where(user: current_user.following)
-    @post_list = @user_posts + @followers_posts
-    @post_list
-  end
-
   def post_params
     params.require(:post).permit(:body)
   end
