@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "connect" => "connects#index"
   resources :posts
-  resource :session
+  resource :session, only: [:new, :create, :destroy]
   resources :users do
     member do
       get :following, :followers
