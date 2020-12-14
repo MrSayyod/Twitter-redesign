@@ -13,6 +13,11 @@ User can manage signups, share his opinions with other by posting them. User can
 - Ruby on Rails 6.0.3.2
 - Heroku
 
+## Screenshots
+![Login page](https://user-images.githubusercontent.com/59321363/102130625-dd01ab00-3e72-11eb-9971-e292622601e2.png)
+![Index page](https://user-images.githubusercontent.com/59321363/102130683-f4409880-3e72-11eb-813d-5848d4a14123.png)
+
+
 ## Live Demo
 
 [Live version](https://obscure-oasis-18737.herokuapp.com/session/new)
