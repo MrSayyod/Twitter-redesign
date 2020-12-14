@@ -26,18 +26,7 @@
       <div>
         <h4>Who to follow</h4>
         <%= who_to_follow %>
-        <% if list_followers.any?%>
-        <% list_followers.each do |suggested_person| %>
-        <div class="my-2 d-flex justify-content-between">
-          <div class="avatar-for-posts col-3 p-0"><%= avatar_for(suggested_person) %></div>
-          <div class="col-9"><span><%= link_to suggested_person.username, suggested_person %></span><span> followed </span><span> by </span><span> <%= suggested_person.followers.first.username %></span></div>
-        </div>
-        <% end %>
-      <% else %>
-      <p>
-      Click to <%= link_to 'connect', connect_path %> to see unfollowed users
-      </p>
-      <% end %>
+        <%= list_of_followers %>
       </div>
       
       
