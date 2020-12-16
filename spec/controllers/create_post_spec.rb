@@ -32,6 +32,14 @@ RSpec.feature 'Create post', type: :feature do
 end
 
 RSpec.feature 'Create post', type: :feature do
+  let(:user) do
+    User.create(
+      username: 'User'
+    )
+  end
+  let(:post) do
+    Post.new(body: 'This is a post', user_id: user.id)
+  end
   describe 'validations' do
     it 'should not be valid without a content' do
       post.body = nil
