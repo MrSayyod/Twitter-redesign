@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @posts = Post.user_posts(current_user) + Post.user_posts(current_user.following)
+    @posts = Post.includes(:user).user_posts(current_user) + Post.includes(:user).user_posts(current_user.following)
     @posts
   end
 

@@ -12,9 +12,7 @@
         <li class="mx-2"><%= link_to 'Lists'%></li>
       </ul>
     </div>
-<% if current_user?(@user) %>
-    <section class="bg-white px-4 py-2 my-4"><%= render 'posts/form' %></section>
-<% end %>
+<%= create_post_if_current_user(@user) %>
 <h3 class="ml-4">All rumours</h3>
     <article class="bg-white px-4 py-2 my-4 ">
     <% @posts.each do |post| %>
@@ -24,14 +22,7 @@
         <b><%= link_to post.user.username, post.user %></b>
         <%= post.body %>
         <div>
-      <% if current_user?(@user) %>
-        <%= link_to edit_post_path(post) do %>
-          <%= fa_icon "edit" %>
-        <% end %>
-        <%= link_to post_path(post), method: :delete, class: "text-danger",  data: {confirm: "Are you sure to delete the post?"} do %>
-          <%= fa_icon "trash" %>
-        <% end %>
-      <% end %>
+      <%= edit_post(post, @user) %>
       </div>
       </div>
       </div>
@@ -58,26 +49,9 @@
               </div>
             </div>
         <div><%= render 'follow_button', :user => User.find(params[:id]) %></div>
-      <% if current_user?(@user) %>
-        <p><%= link_to 'Edit account', edit_user_path %></p>
-        <p><%= link_to 'Delete account', user_path, method: :delete, data: { confirm: "Are you sure to delete your account?" } %></p>
-      </div>
-      <% end %>
+      <%= edit_account(@user) %>
       <h4 class="border-top border-bottom my-2 py-2">Followed by </h4>
-      <% if @user.followers.any? %>
-      <% @user.followers.each do |follower| %>
-        <div class="my-2 d-flex justify-content-between">
-            <div class="avatar-for-posts col-4 p-0"><%= avatar_for(follower) %></div>
-            <h5 class="col-8 d-flex align-items-center font-weight-bold"><span><%= link_to follower.username, follower %></span></h5>
-        </div>
-      <% end %>
-      <% else %>
-        <% if current_user?(@user) %>
-          <h4>You have no followers</h4>
-        <% else %>
-          <h4><%= @user.username %> have no followers</h4>
-        <% end %>
-      <% end %>
+      <%= see_followers(@user) %>
     </div>
   </section>
 
