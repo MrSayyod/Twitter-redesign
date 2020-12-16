@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def who_to_follow
     @following_list = []
-    current_user.following.each do |followings|
+    User.includes(:active_relationships).includes(:following).each do |followings|
       followings.following.each do |refollowing|
         @following_list.push(refollowing)
         @following_list.uniq!
