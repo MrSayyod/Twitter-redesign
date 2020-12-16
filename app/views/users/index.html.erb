@@ -1,7 +1,6 @@
 <div class="container">
   <h1><%= pluralize(@users.size, "User") %></h1>
   <ul>
-    <%# who_to_connect %>
     <% who_to_connect.each do |user| %>
       <div class="d-flex">
         <p class="avatar-for-posts mr-2"><%= avatar_for(user) %></p>
