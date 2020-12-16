@@ -26,6 +26,8 @@ User can manage signups, share his opinions with other by posting them. User can
 
 [Twitter-redesign](https://www.loom.com/share/1356114cfccc4a7dad89580c7fc45b49)
 
+[N+1 query problem solution](https://www.loom.com/share/312038cf273e4e979aadf5b36c84c2c6)
+
 ## Additional gems
 
 - 'bootstrap', '~> 4.5', '>= 4.5.2'
