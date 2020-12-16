@@ -9,32 +9,30 @@ module UsersHelper
   end
 
   def create_post_if_current_user(user)
-    if current_user?(user)
-      render 'posts/create_post'
-    end
+    render 'posts/create_post' if current_user?(user)
   end
 
   def edit_post(post, user)
-    if current_user?(user)
-      render 'posts/edit_post', post: post
-    end    
+    render 'posts/edit_post', post: post if current_user?(user)
   end
 
   def edit_account(user)
+    render 'users/edit_account' if current_user?(user)
+  end
+
+  def no_followers(user)
     if current_user?(user)
-      render 'users/edit_account'
+      render 'users/no_followers'
+    else
+      render 'users/no_user_followers'
     end
   end
 
   def see_followers(user)
     if user.followers.any?
-      render 'users/followers'      
+      render 'users/followers'
     else
-      if current_user?(user)
-        render 'users/no_followers'
-      else
-        render 'users/no_user_followers'
-      end
+      no_followers(user)
     end
   end
 end
