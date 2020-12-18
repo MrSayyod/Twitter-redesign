@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :username, presence: true, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/,
-                                                                         message: 'only letters allowed' }
+                                                                        message: 'only letters allowed' }
   validates :username, uniqueness: true
 
   has_many :posts, dependent: :destroy
