@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :username, presence: true, length: { minimum: 2 }, format: { with: /\A[a-zA-Z]+\z/,
+  validates :username, presence: true, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/,
                                                                          message: 'only letters allowed' }
   validates :username, uniqueness: true
 
