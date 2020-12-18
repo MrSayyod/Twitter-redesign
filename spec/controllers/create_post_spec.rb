@@ -48,7 +48,6 @@ RSpec.feature 'Create post', type: :feature do
 
     it 'should have a content less than 280 characters' do
       post2 = Post.create(body: 'a' * 1001, user_id: user.id)
-      expect(post).to be_valid
       expect(post2).to_not be_valid
     end
   end
