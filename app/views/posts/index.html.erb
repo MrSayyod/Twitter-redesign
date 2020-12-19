@@ -1,0 +1,45 @@
+<div class="d-flex index">
+
+  <section class="col-9 border-right">
+    <h1></h1>
+    <div class="border-bottom">
+      <ul class="d-flex upper-section text-left m-0 p-0 namer">
+        <li><%= link_to 'Rumours'%></li>
+        <li class="mx-2"><%= link_to 'Photos'%></li>
+        <li><%= link_to 'Videos'%></li>
+      </ul>
+    </div>
+    <section class="bg-white px-4 py-2 my-4"><%= render 'form' %></section>
+    <article class="bg-white px-4 py-2 my-4 ">
+    <% @posts.each do |post| %>
+      <div class="d-flex border-bottom border-top my-2 py-2">
+      <div class="avatar-for-posts"><%= avatar_for(post.user)%></div>
+      <div class="d-flex flex-column ml-2">
+        <b><%= link_to post.user.username, post.user %></b>
+        <%= post.body %>
+      </div>
+      </div>
+      <% end %>
+      </article>
+  </section>
+  <section class="col-3">
+      <div>
+        <h4>Who to follow</h4>
+        <%= who_to_follow %>
+        <%= list_of_followers %>
+      </div>
+      <div class="my-2 border-top border-bottom pt-3 pb-2 d-flex justify-content-between">
+        <h6 class="namer font-weight-bold">TRENDING<h6>
+        <%= fa_icon "cog", class: " namer w-25 text-center " %>
+      </div>
+      <ul class="trending_list p-0">
+        <li>#CRonaldocoronacase</li>
+        <li>#LMessiFCBleave</li>
+        <li>#Ibrabeatscoronatwice</li>
+        <li>#willZidanleaveRM</li>
+        <li>#RMlostagaininECL</li>
+        <li>#Lewangolskiscoresagain</li>
+        <li>#RashfordsinksPSG</li>
+      </ul>
+  </section>
+</div>

@@ -1,0 +1,6 @@
+<% @user.followers.each do |follower| %>
+  <div class="my-2 d-flex justify-content-between">
+    <div class="avatar-for-posts col-4 p-0"><%= avatar_for(follower) %></div>
+    <h5 class="col-8 d-flex align-items-center font-weight-bold"><span><%= link_to follower.username, follower %></span></h5>
+  </div>
+<% end %>
