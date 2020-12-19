@@ -1,0 +1,10 @@
+<div class="container mt-2">
+  <ul class="list-unstyled">
+    <% who_to_connect.each do |user|%>
+      <div class="d-flex">
+        <p class="avatar-for-posts mr-2"><%= avatar_for(user) %></p>
+        <li><%= link_to user.username, user %></li>
+      </div>
+    <% end %>
+  </ul>
+</div>
